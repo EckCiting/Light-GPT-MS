@@ -12,6 +12,7 @@ import MsalAuth from "@/pages/components/MsalAuth";
 const msalInstance = new PublicClientApplication({
     auth: {
         clientId: process.env.NEXT_PUBLIC_CLIENT_ID || '',
+        authority: "https://login.microsoftonline.com/" + process.env.NEXT_PUBLIC_AD_DOMAIN,
         redirectUri: process.env.NEXT_PUBLIC_REDIRECT_URI || "http://localhost:3000",
     },
     cache: {

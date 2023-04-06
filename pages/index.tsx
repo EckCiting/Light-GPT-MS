@@ -62,7 +62,14 @@ export default function Home() {
         isUsingComposition: false,
     });
 
+    const { accounts } = useMsal();
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
     useEffect(() => {
+
+        if (accounts.length > 0) {
+            setIsAuthenticated(true);
+        }
         const isMobile =
             /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
                 window.navigator.userAgent
@@ -525,8 +532,7 @@ export default function Home() {
     const [contextMessageCount, setContextMessageCount] = useState(5);
 
 
-    const { accounts } = useMsal();
-    if (accounts.length === 0) {
+    if (!isAuthenticated) {
         return null; // 返回一个空的JSX元素
     }
 
