@@ -50,6 +50,7 @@ import {
     encryptApiKey,
     decryptApiKey,
 } from '../utils';
+import {useMsal} from "@azure/msal-react";
 
 const chatDB = new ChatService();
 
@@ -463,8 +464,11 @@ export default function Home() {
                 createdAt: Date.now(),
             });
         }
-        const light_gpt_api_key =
-            window.localStorage.getItem(APIKeyLocalKey) || '';
+        // 改成从环境变量读取
+        // const light_gpt_api_key =
+        //     window.localStorage.getItem(APIKeyLocalKey) || '';
+        const light_gpt_api_key = process.env.OPENAI_KEY || '';
+        // const light_gpt_api_key =
         const decryptedApiKey = decryptApiKey(light_gpt_api_key);
         if (decryptedApiKey !== '') {
             // 不显示设置过的api_key
@@ -518,6 +522,12 @@ export default function Home() {
     };
 
     const [contextMessageCount, setContextMessageCount] = useState(5);
+
+
+    const { accounts } = useMsal();
+    if (accounts.length === 0) {
+        return null; // 返回一个空的JSX元素
+    }
 
     return (
         <div id="app" className={styles.app} data-theme={theme}>

@@ -6,6 +6,7 @@ import {
 
 import CryptoJS from 'crypto-js';
 
+// TODO: 这里需要改成从环境变量读取
 export const SECRET_KEY =
     '64787423c7ea99e608bab61303b309a996a1e000db87bd73533bd979892b1644';
 
