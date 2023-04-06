@@ -21,11 +21,21 @@ RUN pnpm install
 COPY . .
 
 # 构建Next.js应用
-RUN npm run build
+RUN pnpm run build
 
 # 设置环境变量
+ARG NEXT_PUBLIC_CLIENT_ID
+ARG NEXT_PUBLIC_REDIRECT_URI
+ARG NEXT_PUBLIC_OPENAI_KEY
+
 ENV NODE_ENV=production
 ENV PORT 3000
+ENV NEXT_PUBLIC_CLIENT_ID=${NEXT_PUBLIC_CLIENT_ID}
+ENV NEXT_PUBLIC_REDIRECT_URI=${NEXT_PUBLIC_REDIRECT_URI}
+ENV NEXT_PUBLIC_OPENAI_KEY=${NEXT_PUBLIC_OPENAI_KEY}
+
+# 检查环境变量是否存在，如果不存在则使构建失败
+RUN if [ -z "$NEXT_PUBLIC_CLIENT_ID" ] || [ -z "$NEXT_PUBLIC_REDIRECT_URI" ] || [ -z "$NEXT_PUBLIC_OPENAI_KEY" ]; then echo "Error: Missing environment variables" && exit 1; fi
 
 # 暴露端口
 EXPOSE 3000

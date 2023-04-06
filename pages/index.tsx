@@ -467,9 +467,10 @@ export default function Home() {
         // 改成从环境变量读取
         // const light_gpt_api_key =
         //     window.localStorage.getItem(APIKeyLocalKey) || '';
-        const light_gpt_api_key = process.env.OPENAI_KEY || '';
-        // const light_gpt_api_key =
-        const decryptedApiKey = decryptApiKey(light_gpt_api_key);
+        // const decryptedApiKey = decryptApiKey(light_gpt_api_key);
+
+        const decryptedApiKey = process.env.NEXT_PUBLIC_OPENAI_KEY||'';
+
         if (decryptedApiKey !== '') {
             // 不显示设置过的api_key
             setApiKey(decryptedApiKey);
