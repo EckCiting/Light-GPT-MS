@@ -514,11 +514,11 @@ export default function Home() {
             iconName: 'fa-id-badge',
             value: SystemSettingMenu.systemRoleSettings,
         },
-        {
-            label: t('apiKeySettings'),
-            iconName: 'fa-key',
-            value: SystemSettingMenu.apiKeySettings,
-        },
+        // {
+        //     label: t('apiKeySettings'),
+        //     iconName: 'fa-key',
+        //     value: SystemSettingMenu.apiKeySettings,
+        // },
     ];
 
     const [isZh, setIsZh] = useState(true);
@@ -966,54 +966,54 @@ export default function Home() {
                             </div>
                         </div>
                     )}
-                    {activeSystemMenu === SystemSettingMenu.apiKeySettings && (
-                        <div className={styles.systemRoleSettings}>
-                            <label htmlFor="apiKey">Open AI API Key</label>
-                            <input
-                                placeholder="Enter your open ai api key"
-                                id="apiKey"
-                                value={tempApiKeyValue}
-                                onChange={(e) => {
-                                    setTempApiKeyValue(e.target.value);
-                                }}
-                            ></input>
+                    {/*{activeSystemMenu === SystemSettingMenu.apiKeySettings && (*/}
+                    {/*    <div className={styles.systemRoleSettings}>*/}
+                    {/*        <label htmlFor="apiKey">Open AI API Key</label>*/}
+                    {/*        <input*/}
+                    {/*            placeholder="Enter your open ai api key"*/}
+                    {/*            id="apiKey"*/}
+                    {/*            value={tempApiKeyValue}*/}
+                    {/*            onChange={(e) => {*/}
+                    {/*                setTempApiKeyValue(e.target.value);*/}
+                    {/*            }}*/}
+                    {/*        ></input>*/}
 
-                            <div className={styles.description}>
-                                {t('apiKeyDescription')}
-                            </div>
+                    {/*        <div className={styles.description}>*/}
+                    {/*            {t('apiKeyDescription')}*/}
+                    {/*        </div>*/}
 
-                            <div className={styles.benefits}>
-                                {t('apiKeyHelp')}
-                                <Link
-                                    href="https://platform.openai.com/account/api-keys"
-                                    target="_blank"
-                                >
-                                    Open AI Platform API KEYS
-                                </Link>{' '}
-                            </div>
-                            <div className={styles.btnContainer}>
-                                <button
-                                    className={styles.saveButton}
-                                    onClick={() => {
-                                        setActiveSystemMenu('');
-                                        setApiKey(tempApiKeyValue);
+                    {/*        <div className={styles.benefits}>*/}
+                    {/*            {t('apiKeyHelp')}*/}
+                    {/*            <Link*/}
+                    {/*                href="https://platform.openai.com/account/api-keys"*/}
+                    {/*                target="_blank"*/}
+                    {/*            >*/}
+                    {/*                Open AI Platform API KEYS*/}
+                    {/*            </Link>{' '}*/}
+                    {/*        </div>*/}
+                    {/*        <div className={styles.btnContainer}>*/}
+                    {/*            <button*/}
+                    {/*                className={styles.saveButton}*/}
+                    {/*                onClick={() => {*/}
+                    {/*                    setActiveSystemMenu('');*/}
+                    {/*                    setApiKey(tempApiKeyValue);*/}
 
-                                        const encryptedApiKey =
-                                            encryptApiKey(tempApiKeyValue);
-                                        window.localStorage.setItem(
-                                            APIKeyLocalKey,
-                                            encryptedApiKey
-                                        );
-                                        toast.success('Successful update', {
-                                            autoClose: 1000,
-                                        });
-                                    }}
-                                >
-                                    {t('save')}
-                                </button>
-                            </div>
-                        </div>
-                    )}
+                    {/*                    const encryptedApiKey =*/}
+                    {/*                        encryptApiKey(tempApiKeyValue);*/}
+                    {/*                    window.localStorage.setItem(*/}
+                    {/*                        APIKeyLocalKey,*/}
+                    {/*                        encryptedApiKey*/}
+                    {/*                    );*/}
+                    {/*                    toast.success('Successful update', {*/}
+                    {/*                        autoClose: 1000,*/}
+                    {/*                    });*/}
+                    {/*                }}*/}
+                    {/*            >*/}
+                    {/*                {t('save')}*/}
+                    {/*            </button>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*)}*/}
                 </div>
             </div>
 
